@@ -2,13 +2,13 @@
     class itemCarrinhoDAO {
         protected $conn;
         public function __construct() {
-            require "../../conexao/conexao.php";
+            require "conexao.php";
 	        $this->conn = mysqli_connect($config['host'], $config['dbuser'], $config['dbpass'], $config['dbname']);
         }
 
         public function pesquisar($id_carrinho) {
             require "../classes/itemCarrinho.php";
-            $comando = "SELECT * FROM itemcarrinho WHERE id_carrinho = '$id_carrinho';";
+            $comando = "SELECT * FROM itemCarrinho WHERE id_carrinho = '$id_carrinho';";
             $result = mysqli_query($this->conn, $comando);
             $listItemCarrinho = [];
             while ($campo=mysqli_fetch_array($result)){

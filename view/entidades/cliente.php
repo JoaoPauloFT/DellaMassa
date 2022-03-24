@@ -65,6 +65,9 @@ $logado = $_SESSION['login'];
                     <li class="nav-item">
                         <a class="nav-link" href="../pedido.php">Pedidos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../config.php">Configurações</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -111,8 +114,8 @@ $logado = $_SESSION['login'];
                         $tabela->insere_linha($contador);
                         $tabela->insere_coluna($campo["id_cliente"],$contador,0);
                         $tabela->insere_coluna($campo["nome"],$contador,1);
-                        $tabela->insere_coluna($campo["celular"],$contador,2);
-                        $tabela->insere_coluna($campo["email"],$contador,3);
+                        $tabela->insere_coluna($campo["email"],$contador,2);
+                        $tabela->insere_coluna($campo["celular"],$contador,3);
                         $tabela->insere_coluna3($campo["id_cliente"],$contador,4,"Editar", "formCliente","");
                         $tabela->insere_coluna3($campo["id_cliente"],$contador,6,"Excluir", "formCliente","");
                         $tabela->fecha_linha();

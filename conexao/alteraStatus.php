@@ -6,7 +6,9 @@
     while ($campo=mysqli_fetch_array($result)){
         $status = $campo["status"];
     }
-    if ($status == "Preparando") {
+    if ($status == "Aguardando aprovação") {
+        $mudar = "Preparando";
+    } else if ($status == "Preparando") {
         $mudar = "Saiu para entrega";
     } else {
         $mudar = "Finalizado";
@@ -15,10 +17,10 @@
         if($_POST['resp'] == "sim") {
             $comando = "UPDATE carrinho SET status = '$mudar' WHERE numPedido = '$pedido'";
             $result = mysqli_query($conn, $comando);
-		    header("Location: pedido.php");
+		    header("Location: ../view/pedido.php");
         }
     } else { 
-        echo "<form action='status.php' method='post'>
+        echo "<form action='alteraStatus.php' method='post'>
             <input type='hidden' name='pedido' value='$pedido'>
             <input type='hidden' name='resp' value='sim'>
             <input id='alterar' type='submit' value='Alterar'>

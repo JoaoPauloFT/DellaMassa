@@ -63,6 +63,9 @@ $logado = $_SESSION['login'];
                     <li class="nav-item">
                         <a style="color: white;" class="nav-link" href="pedido.php">Pedidos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="config.php">Configurações</a>
+                    </li>
                 </ul>
             </div>
         </div>

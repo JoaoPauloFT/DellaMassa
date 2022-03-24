@@ -32,14 +32,14 @@
             if($itemCar->getTipo() == "acai") {
                 $acaiDAO = new acaiDAO();
                 $acai = new acai();
-                $acai = $acaiDAO->pesquisar($itemCar->getId_item());
+                $acai = $acaiDAO->pesquisarImprimir($itemCar->getId_item(), $conn);
                 echo "<p>1 - ".$acai->getNome( )."</p>";
                 $divisor = explode(";",$itemCar->getDescricao());
                 for($i = 0; $i < count($divisor)-1; $i++) {
                     $most = $i + 1;
                     $ingredienteDAO = new ingredienteDAO();
                     $ingrediente = new ingrediente(); 
-                    $ingrediente = $ingredienteDAO->pesquisar($divisor[$i]);    
+                    $ingrediente = $ingredienteDAO->pesquisarImprimir($divisor[$i], $conn);
                     echo "<p>&emsp;&emsp;".$most." - ".$ingrediente->getNome()."</p>"; 
                 }
             } else if ($itemCar->getId_item3() != "") {
