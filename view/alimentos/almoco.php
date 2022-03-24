@@ -29,7 +29,7 @@ $logado = $_SESSION['login'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../estilo/principal.css">
     <meta http-equiv="refresh" content="10">
-    <title>Açai - Della Massa</title>
+    <title>Almoço - Della Massa</title>
 </head>
 <body id="padrao">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -50,17 +50,17 @@ $logado = $_SESSION['login'];
                     <li class="nav-item dropdown">
                         <a style="color: white;" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Alimentos</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="acai.php">Pizza</a></li>
+                            <li><a class="dropdown-item" href="pizza.php">Pizza</a></li>
                             <li><a class="dropdown-item" href="esfiha.php">Esfiha</a></li>
                             <li><a class="dropdown-item" href="lanche.php">Lanche</a></li>
                             <li><a class="dropdown-item" href="pastel.php">Pastel</a></li>
                             <li><a class="dropdown-item" href="porcao.php">Porção</a></li> 
                             <li><a class="dropdown-item" href="bebida.php">Bebida</a></li>
-                            <li><a style="background-color: grey; color: white;" class="dropdown-item" href="acai.php">Açai</a></li>
+                            <li><a class="dropdown-item" href="acai.php">Açai</a></li>
                             <li><a class="dropdown-item" href="ingrediente.php">Ingrediente</a></li>
                             <li><a class="dropdown-item" href="sobremesa.php">Sobremesa</a></li>
                             <li><a class="dropdown-item" href="borda.php">Borda</a></li>
-                            <li><a class="dropdown-item" href="almoco.php">Almoço</a></li>
+                            <li><a style="background-color: grey; color: white;" class="dropdown-item" href="almoco.php">Almoço</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -75,7 +75,7 @@ $logado = $_SESSION['login'];
     </nav>
     <main>
         <div>
-            <form action="acai.php" method="GET">
+            <form action="almoco.php" method="GET">
                 <div style="padding: 0px 20px 0px 20px;"  class="form-floating mb-3 mt-3">
                     <?php echo "<input type='text' class='form-control' id='pesquisa' placeholder='Pesquisar' name='pesquisa' value ='$pesquisar'>"; ?>
                     <label  style="padding-left: 30px;" for="pesquisa">Pesquisar</label>
@@ -98,11 +98,11 @@ $logado = $_SESSION['login'];
                     $base2 = 5;
                     $base = $pag * $base2;
                     if($pesquisar == "") {
-                        $comando = "SELECT * FROM acai ORDER BY id_acai DESC LIMIT $base, $base2";
-                        $comandoCount = "SELECT COUNT(*) FROM acai";
+                        $comando = "SELECT * FROM almoco ORDER BY id_almoco DESC LIMIT $base, $base2";
+                        $comandoCount = "SELECT COUNT(*) FROM almoco";
                     } else {
-                        $comando = "SELECT * FROM acai WHERE nome LIKE '%".$pesquisar."%' ORDER BY id_acai DESC LIMIT $base, $base2";
-                        $comandoCount = "SELECT COUNT(*) FROM acai WHERE nome LIKE '%".$pesquisar."%' LIMIT $base, $base2";
+                        $comando = "SELECT * FROM almoco WHERE nome LIKE '%".$pesquisar."%' ORDER BY id_almoco DESC LIMIT $base, $base2";
+                        $comandoCount = "SELECT COUNT(*) FROM almoco WHERE nome LIKE '%".$pesquisar."%' LIMIT $base, $base2";
                     }
                     // Parte do código que faz a paginação de tabela
                     $resultCount = mysqli_query($conn, $comandoCount);
@@ -113,20 +113,20 @@ $logado = $_SESSION['login'];
                     $contador = 0;		    
                     while ($campo=mysqli_fetch_array($result)){
                         $tabela->insere_linha($contador);
-                        $tabela->insere_coluna($campo["id_acai"],$contador,0);
+                        $tabela->insere_coluna($campo["id_almoco"],$contador,0);
                         $tabela->insere_coluna($campo["nome"],$contador,1);
                         $tabela->insere_coluna($campo["ingrediente"],$contador,2);
                         $tabela->insere_coluna($campo["valor"],$contador,3);
-                        $tabela->insere_coluna3("",$contador,4,"Inserir", "formAcai","");
-                        $tabela->insere_coluna3($campo["id_acai"],$contador,5,"Editar", "formAcai","");
-                        $tabela->insere_coluna3($campo["id_acai"],$contador,6,"Excluir", "formAcai","");
+                        $tabela->insere_coluna3("",$contador,4,"Inserir", "formAlmoco","");
+                        $tabela->insere_coluna3($campo["id_almoco"],$contador,5,"Editar", "formAlmoco","");
+                        $tabela->insere_coluna3($campo["id_almoco"],$contador,6,"Excluir", "formAlmoco","");
                         $tabela->fecha_linha();
                         $contador++;
                     }
                 ?>
             </table>
             <div class="btn-group">
-                <form action="acai.php" method="GET">
+                <form action="almoco.php" method="GET">
                     <?php
                         for($i = 0; $i < $num_pages; $i++) {
                             if($i == $pag) {

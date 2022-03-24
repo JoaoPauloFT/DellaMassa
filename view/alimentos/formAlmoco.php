@@ -1,35 +1,34 @@
 <?php
 include_once("../../conexao/conexao.php");
-include_once("../../classes/pizza.php");
+include_once("../../classes/almoco.php");
 require "../../classes/tabela.php";
 $tabela = new Tabela();
-$c = new pizza();
+$c = new almoco();
 
 if(isset($_POST['pedido'])) {
-    include_once("../../classesDAO/pizzaDAO.php");
-    $cDAO = new pizzaDAO();
+    include_once("../../classesDAO/almocoDAO.php");
+    $cDAO = new almocoDAO();
     if($_POST['action']=="Editar") {
         $c = $cDAO->pesquisar($_POST['pedido']);
     } elseif($_POST['action']=="Excluir") {
         $cDAO->excluir($_POST['pedido']);
-        header('location:pizza.php');
+        header('location:almoco.php');
     }
-}
+} 
 
 if (isset($_POST['id'])) {
     if($_POST['id'] != "") {
-        include_once("../../classesDAO/pizzaDAO.php");
-        $cDAO = new pizzaDAO();
-        $cDAO->editar($_POST['id'], $_POST['nome'], $_POST['ingrediente'], $_POST['tipo'], $_POST['broto'], $_POST['grande']);
-        header('location:pizza.php');
+        include_once("../../classesDAO/almocoDAO.php");
+        $fDAO = new almocoDAO();
+        $fDAO->editar($_POST['id'], $_POST['nome'], $_POST['ingrediente'], $_POST['valor']);
+        header('location:almoco.php');
     } else {
-        include_once("../../classesDAO/pizzaDAO.php");
-        $fDAO = new pizzaDAO();
-        $fDAO->inserir($_POST['nome'], $_POST['ingrediente'], $_POST['tipo'], $_POST['broto'], $_POST['grande']);
-        header('location:pizza.php');
+        include_once("../../classesDAO/almocoDAO.php");
+        $fDAO = new almocoDAO();
+        $fDAO->inserir($_POST['nome'], $_POST['ingrediente'], $_POST['valor']);
+        header('location:almoco.php');
     }
 }
-
 
 session_start();
 if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)) {
@@ -49,7 +48,7 @@ $logado = $_SESSION['login'];
     <script type="text/javascript" src="../../estilo/jquery.mask.min.js"></script>
     <link rel="shortcut icon" type="imagem/x-icon" href="../../imagens/logo.ico" />
     <link rel="stylesheet" href="../../estilo/principal.css">
-    <title>Pizza - Della Massa</title>
+    <title>Almoço - Della Massa</title>
 </head>
 <body id="padrao">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -70,7 +69,7 @@ $logado = $_SESSION['login'];
                     <li class="nav-item dropdown">
                         <a style="color: white;" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Alimentos</a>
                         <ul class="dropdown-menu">
-                            <li><a style="background-color: grey; color: white;" class="dropdown-item" href="pizza.php">Pizza</a></li>
+                            <li><a class="dropdown-item" href="pizza.php">Pizza</a></li>
                             <li><a class="dropdown-item" href="esfiha.php">Esfiha</a></li>
                             <li><a class="dropdown-item" href="lanche.php">Lanche</a></li>
                             <li><a class="dropdown-item" href="pastel.php">Pastel</a></li>
@@ -80,7 +79,7 @@ $logado = $_SESSION['login'];
                             <li><a class="dropdown-item" href="ingrediente.php">Ingrediente</a></li>
                             <li><a class="dropdown-item" href="sobremesa.php">Sobremesa</a></li>
                             <li><a class="dropdown-item" href="borda.php">Borda</a></li>
-                            <li><a class="dropdown-item" href="almoco.php">Almoço</a></li>
+                            <li><a style="background-color: grey; color: white;" class="dropdown-item" href="almoco.php">Almoço</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -95,7 +94,7 @@ $logado = $_SESSION['login'];
     </nav>
     <main style="text-align: left; padding: 15px 30px 30px 30px;">
         <div>
-            <form action="formPizza.php" method="post">
+            <form action="formAlmoco.php" method="post">
                 <input type="hidden" name="id" id="id" value="<?php echo $_POST['pedido']; ?>">
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome:</label>
@@ -105,28 +104,9 @@ $logado = $_SESSION['login'];
                     <label for="ingrediente" class="form-label">Ingrediente:</label>
                     <input type="text" class="form-control" id="ingrediente" placeholder="Ingrediente" name="ingrediente" value="<?php echo $c->getIngrediente(); ?>">
                 </div>
-                <div class="mb-3">
-                    <label for="tipo" class="form-label">Tipo:</label>
-                    <select class="form-select" name="tipo" id="tipo">
-                        <?php
-                            if ($c->getTipoPizza() == "s") {
-                                echo "<option value='d'>Doce</option>
-                                <option value='s' selected>Salgado</option>";
-                            } else {
-                                echo "<option value='d' selected>Doce</option>
-                                <option value='s'>Salgado</option>";
-                            }
-                        ?>
-                    </select>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <label for="email" class="form-label">Broto:</label>
-                        <input type="text" class="form-control" id="broto" placeholder="Broto" name="broto" value="<?php echo $c->getBroto(); ?>">
-                    </div>
-                    <div class="col-6">
-                        <label for="grande" class="form-label">Grande:</label>
-                        <input type="text" class="form-control" id="grande" placeholder="Grande" name="grande" value="<?php echo $c->getGrande(); ?>">
+                    <div class="mb-3">
+                        <label for="valor" class="form-label">Valor:</label>
+                        <input type="text" class="form-control" id="valor" placeholder="Valor" name="valor" value="<?php echo $c->getValor(); ?>">
                     </div>
                 </div>
                 <br />
@@ -139,11 +119,10 @@ $logado = $_SESSION['login'];
     </main>
     <script>
         function voltar() {
-            window.location.href = 'pizza.php';
+            window.location.href = 'almoco.php';
         }
         $(document).ready(function(){
-                $('#broto').mask('9999.99', { reverse:true});
-                $('#grande').mask('9999.99', { reverse:true});
+                $('#valor').mask('9999.99', { reverse:true});
             });
     </script>
 </body>

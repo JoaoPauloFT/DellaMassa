@@ -60,6 +60,7 @@ $logado = $_SESSION['login'];
                             <li><a style="background-color: grey; color: white;" class="dropdown-item" href="ingrediente.php">Ingrediente</a></li>
                             <li><a class="dropdown-item" href="sobremesa.php">Sobremesa</a></li>
                             <li><a class="dropdown-item" href="borda.php">Borda</a></li>
+                            <li><a class="dropdown-item" href="almoco.php">Almoço</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

@@ -56,6 +56,7 @@ $c = $cDAO->pesquisar();
                             <li><a class="dropdown-item" href="alimentos/ingrediente.php">Ingrediente</a></li>
                             <li><a class="dropdown-item" href="alimentos/sobremesa.php">Sobremesa</a></li>
                             <li><a class="dropdown-item" href="alimentos/borda.php">Borda</a></li>
+                            <li><a class="dropdown-item" href="alimentos/almoco.php">Almoço</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
