@@ -3,6 +3,15 @@
         private $id_ingrediente;
         private $nome;
         private $valor;
+        private $status;
+
+        public function setStatus($status) {
+            $this->status = $status;
+        }
+
+        public function getStatus() {
+            return $this->status;
+        }
 
         public function setId_ingrediente($id_ingrediente) {
             $this->id_ingrediente = $id_ingrediente;

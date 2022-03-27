@@ -16,6 +16,7 @@
                 $a->setValor($campo["valor"]);
                 $a->setIngrediente($campo["ingrediente"]);
                 $a->setValorDuplo($campo["valorDuplo"]);
+                $a->setStatus($campo["status"]);
             }
             return $a;
         }
@@ -25,13 +26,13 @@
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function inserir($nome, $ingrediente, $valor, $valorDuplo) {    
-            $comando = "INSERT INTO lanche (nome, valor, ingrediente, valorDuplo) VALUES ('$nome', '$valor', '$ingrediente', '$valorDuplo')";
+        public function inserir($nome, $ingrediente, $valor, $valorDuplo, $status) {    
+            $comando = "INSERT INTO lanche (nome, valor, ingrediente, valorDuplo, status) VALUES ('$nome', '$valor', '$ingrediente', '$valorDuplo', '$status')";
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function editar($id, $nome, $ingrediente, $valor, $valorDuplo) {    
-            $comando = "UPDATE lanche SET nome = '$nome', ingrediente = '$ingrediente', valor = '$valor', valorDuplo = '$valorDuplo' WHERE id_lanche = '$id'";
+        public function editar($id, $nome, $ingrediente, $valor, $valorDuplo, $status) {    
+            $comando = "UPDATE lanche SET nome = '$nome', ingrediente = '$ingrediente', valor = '$valor', status = '$status', valorDuplo = '$valorDuplo' WHERE id_lanche = '$id'";
             $result = mysqli_query($this->conn, $comando);
         }
     }

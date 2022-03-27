@@ -20,12 +20,12 @@ if (isset($_POST['id'])) {
     if($_POST['id'] != "") {
         include_once("../../classesDAO/lancheDAO.php");
         $cDAO = new lancheDAO();
-        $cDAO->editar($_POST['id'], $_POST['nome'], $_POST['ingrediente'], $_POST['valor'], $_POST['valorDuplo']);
+        $cDAO->editar($_POST['id'], $_POST['nome'], $_POST['ingrediente'], $_POST['valor'], $_POST['valorDuplo'], $_POST['status']);
         header('location:lanche.php');
     } else {
         include_once("../../classesDAO/lancheDAO.php");
         $fDAO = new lancheDAO();
-        $fDAO->inserir($_POST['nome'], $_POST['ingrediente'], $_POST['valor'], $_POST['valorDuplo']);
+        $fDAO->inserir($_POST['nome'], $_POST['ingrediente'], $_POST['valor'], $_POST['valorDuplo'], $_POST['status']);
         header('location:lanche.php');
     }
 }
@@ -113,6 +113,20 @@ $logado = $_SESSION['login'];
                     <div class="col-6">
                         <label for="valorDuplo" class="form-label">Duplo:</label>
                         <input type="text" class="form-control" id="valorDuplo" placeholder="Valor Duplo" name="valorDuplo" value="<?php echo $c->getValorDuplo(); ?>">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="status" class="form-label">Ativo:</label>
+                        <select class="form-control" name="status" id="status">
+                            <?php if ($c->getStatus() == 0) { ?>
+                                <option value="1">Sim</option>
+                                <option value="0" selected>Não</option>
+                            <?php } else { ?>
+                                <option value="1" selected>Sim</option>
+                                <option value="0">Não</option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
                 <br />

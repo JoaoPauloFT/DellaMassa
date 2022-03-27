@@ -20,12 +20,12 @@ if (isset($_POST['id'])) {
     if($_POST['id'] != "") {
         include_once("../../classesDAO/bordaDAO.php");
         $fDAO = new bordaDAO();
-        $fDAO->editar($_POST['id'], $_POST['nome'], $_POST['valor']);
+        $fDAO->editar($_POST['id'], $_POST['nome'], $_POST['valor'], $_POST['status']);
         header('location:borda.php');
     } else {
         include_once("../../classesDAO/bordaDAO.php");
         $fDAO = new bordaDAO();
-        $fDAO->inserir($_POST['nome'], $_POST['valor']);
+        $fDAO->inserir($_POST['nome'], $_POST['valor'], $_POST['status']);
         header('location:borda.php');
     }
 }
@@ -105,6 +105,20 @@ $logado = $_SESSION['login'];
                         <input type="text" class="form-control" id="valor" placeholder="Valor" name="valor" value="<?php echo $c->getValor(); ?>">
                     </div>
                 <br />
+                <div class="row">
+                    <div class="col">
+                        <label for="status" class="form-label">Ativo:</label>
+                        <select class="form-control" name="status" id="status">
+                            <?php if ($c->getStatus() == 0) { ?>
+                                <option value="1">Sim</option>
+                                <option value="0" selected>Não</option>
+                            <?php } else { ?>
+                                <option value="1" selected>Sim</option>
+                                <option value="0">Não</option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-9"><input class="btn btn-danger" type="submit" value="Salvar"></div>
                     <div class="col-3"><input class="btn btn-danger right" type="button" value="Voltar" onclick="voltar()"></div>

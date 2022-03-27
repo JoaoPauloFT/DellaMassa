@@ -4,6 +4,15 @@
         private $nome;
         private $quantidade;
         private $valor;
+        private $status;
+
+        public function setStatus($status) {
+            $this->status = $status;
+        }
+
+        public function getStatus() {
+            return $this->status;
+        }
 
         public function setId_bebida($id_bebida) {
             $this->id_bebida = $id_bebida;

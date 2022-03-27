@@ -91,6 +91,7 @@ $logado = $_SESSION['login'];
                         <th>Nome</th>
                         <th>Tipo</th>
                         <th>Valor</th>
+                        <th>Status</th>
                         <th colspan="3">Ação</th>
                     </tr>
                 </thead>
@@ -112,6 +113,11 @@ $logado = $_SESSION['login'];
                     $result = mysqli_query($conn, $comando);
                     $contador = 0;		    
                     while ($campo=mysqli_fetch_array($result)){
+                        if($campo['status'] == 0) {
+                            $status = "Não";
+                        } else {
+                            $status = "Sim";
+                        }
                         if ($campo["tipo"] == "d") {
                             $tipo = "Doce";
                         } else {
@@ -122,9 +128,10 @@ $logado = $_SESSION['login'];
                         $tabela->insere_coluna($campo["nome"],$contador,1);
                         $tabela->insere_coluna($tipo,$contador,2);
                         $tabela->insere_coluna($campo["valor"],$contador,3);
-                        $tabela->insere_coluna3("",$contador,4,"Inserir", "formEsfiha","");
-                        $tabela->insere_coluna3($campo["id_esfiha"],$contador,5,"Editar", "formEsfiha","");
-                        $tabela->insere_coluna3($campo["id_esfiha"],$contador,6,"Excluir", "formEsfiha","");
+                        $tabela->insere_coluna($status,$contador,4);
+                        $tabela->insere_coluna3("",$contador,5,"Inserir", "formEsfiha","");
+                        $tabela->insere_coluna3($campo["id_esfiha"],$contador,6,"Editar", "formEsfiha","");
+                        $tabela->insere_coluna3($campo["id_esfiha"],$contador,7,"Excluir", "formEsfiha","");
                         $tabela->fecha_linha();
                         $contador++;
                     }

@@ -14,6 +14,7 @@
                 $a->setId_sobremesa($campo["id_sobremesa"]);
                 $a->setNome($campo["nome"]);
                 $a->setValor($campo["valor"]);
+                $a->setStatus($campo["status"]);
             }
             return $a;
         }
@@ -23,13 +24,13 @@
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function inserir($nome, $valor) {    
-            $comando = "INSERT INTO sobremesa (nome, valor) VALUES ('$nome', '$valor')";
+        public function inserir($nome, $valor, $status) {    
+            $comando = "INSERT INTO sobremesa (nome, valor, status) VALUES ('$nome', '$valor', '$status')";
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function editar($id, $nome, $valor) {    
-            $comando = "UPDATE sobremesa SET nome = '$nome', valor = '$valor' WHERE id_sobremesa = '$id'";
+        public function editar($id, $nome, $valor, $status) {    
+            $comando = "UPDATE sobremesa SET nome = '$nome', valor = '$valor', status = '$status' WHERE id_sobremesa = '$id'";
             $result = mysqli_query($this->conn, $comando);
         }
     }

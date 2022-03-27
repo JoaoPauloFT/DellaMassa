@@ -15,6 +15,7 @@
                 $a->setNome($campo["nome"]);
                 $a->setQuantidade($campo["quantidade"]);
                 $a->setValor($campo["valor"]);
+                $a->setStatus($campo["status"]);
             }
             return $a;
         }
@@ -24,13 +25,13 @@
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function inserir($nome, $quantidade, $valor) {    
-            $comando = "INSERT INTO bebida (nome, quantidade, valor) VALUES ('$nome', '$quantidade', '$valor')";
+        public function inserir($nome, $quantidade, $valor, $status) {    
+            $comando = "INSERT INTO bebida (nome, quantidade, valor, status) VALUES ('$nome', '$quantidade', '$valor', '$status')";
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function editar($id, $nome, $quantidade, $valor) {    
-            $comando = "UPDATE bebida SET nome = '$nome', quantidade = '$quantidade', valor = '$valor' WHERE id_bebida = '$id'";
+        public function editar($id, $nome, $quantidade, $valor, $status) {    
+            $comando = "UPDATE bebida SET nome = '$nome', quantidade = '$quantidade', valor = '$valor', status = '$status' WHERE id_bebida = '$id'";
             $result = mysqli_query($this->conn, $comando);
         }
     }

@@ -5,6 +5,15 @@
         private $ingrediente;
         private $valor;
         private $valorDuplo;
+        private $status;
+
+        public function setStatus($status) {
+            $this->status = $status;
+        }
+
+        public function getStatus() {
+            return $this->status;
+        }
 
         public function setId_lanche($id_lanche) {
             $this->id_lanche = $id_lanche;

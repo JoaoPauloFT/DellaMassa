@@ -3,6 +3,15 @@
         private $id_sobremesa;
         private $nome;
         private $valor;
+        private $status;
+
+        public function setStatus($status) {
+            $this->status = $status;
+        }
+
+        public function getStatus() {
+            return $this->status;
+        }
 
         public function setId_sobremesa($id_sobremesa) {
             $this->id_sobremesa = $id_sobremesa;

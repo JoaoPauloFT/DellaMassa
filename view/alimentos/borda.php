@@ -90,6 +90,7 @@ $logado = $_SESSION['login'];
                         <th>Código</th>
                         <th style="width: 50%;">Nome</th>
                         <th>Valor</th>
+                        <th>Status</th>
                         <th colspan="3">Ação</th>
                     </tr>
                 </thead>
@@ -111,13 +112,19 @@ $logado = $_SESSION['login'];
                     $result = mysqli_query($conn, $comando);
                     $contador = 0;		    
                     while ($campo=mysqli_fetch_array($result)){
+                        if($campo['status'] == 0) {
+                            $status = "Não";
+                        } else {
+                            $status = "Sim";
+                        }
                         $tabela->insere_linha($contador);
                         $tabela->insere_coluna($campo["id_borda"],$contador,0);
                         $tabela->insere_coluna($campo["nome"],$contador,1);
                         $tabela->insere_coluna($campo["valor"],$contador,2);
-                        $tabela->insere_coluna3("",$contador,3,"Inserir", "formBorda","");
-                        $tabela->insere_coluna3($campo["id_borda"],$contador,4,"Editar", "formBorda","");
-                        $tabela->insere_coluna3($campo["id_borda"],$contador,5,"Excluir", "formBorda","");
+                        $tabela->insere_coluna($status,$contador,3);
+                        $tabela->insere_coluna3("",$contador,4,"Inserir", "formBorda","");
+                        $tabela->insere_coluna3($campo["id_borda"],$contador,5,"Editar", "formBorda","");
+                        $tabela->insere_coluna3($campo["id_borda"],$contador,6,"Excluir", "formBorda","");
                         $tabela->fecha_linha();
                         $contador++;
                     }

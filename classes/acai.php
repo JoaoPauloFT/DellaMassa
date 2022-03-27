@@ -4,6 +4,15 @@
         private $nome;
         private $ingrediente;
         private $valor;
+        private $status;
+
+        public function setStatus($status) {
+            $this->status = $status;
+        }
+
+        public function getStatus() {
+            return $this->status;
+        }
 
         public function setId_acai($id_acai) {
             $this->id_acai = $id_acai;

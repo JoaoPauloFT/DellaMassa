@@ -3,6 +3,15 @@
         private $id_borda;
         private $nome;
         private $valor;
+        private $status;
+
+        public function setStatus($status) {
+            $this->status = $status;
+        }
+
+        public function getStatus() {
+            return $this->status;
+        }
 
         public function setId_borda($id_borda) {
             $this->id_borda = $id_borda;

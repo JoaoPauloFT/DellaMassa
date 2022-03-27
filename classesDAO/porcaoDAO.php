@@ -15,6 +15,7 @@
                 $a->setNome($campo["nome"]);
                 $a->setValor($campo["valor"]);
                 $a->setIngrediente($campo["ingrediente"]);
+                $a->setStatus($campo["status"]);
             }
             return $a;
         }
@@ -24,13 +25,13 @@
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function inserir($nome, $ingrediente, $valor) {    
-            $comando = "INSERT INTO porcao (nome, valor, ingrediente) VALUES ('$nome', '$valor', '$ingrediente')";
+        public function inserir($nome, $ingrediente, $valor, $status) {    
+            $comando = "INSERT INTO porcao (nome, valor, ingrediente, status) VALUES ('$nome', '$valor', '$ingrediente', '$status')";
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function editar($id, $nome, $ingrediente, $valor) {    
-            $comando = "UPDATE porcao SET nome = '$nome', ingrediente = '$ingrediente', valor = '$valor' WHERE id_porcao = '$id'";
+        public function editar($id, $nome, $ingrediente, $valor, $status) {    
+            $comando = "UPDATE porcao SET nome = '$nome', ingrediente = '$ingrediente', valor = '$valor', status = '$status' WHERE id_porcao = '$id'";
             $result = mysqli_query($this->conn, $comando);
         }
     }

@@ -17,6 +17,7 @@
                 $a->setTipoPizza($campo["tipoPizza"]);
                 $a->setBroto($campo["valorBroto"]);
                 $a->setGrande($campo["valor"]);
+                $a->setStatus($campo["status"]);
             }
             return $a;
         }
@@ -26,13 +27,13 @@
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function inserir($nome, $ingrediente, $tipoPizza, $broto, $grande) {    
-            $comando = "INSERT INTO pizza (nome, valorBroto, ingrediente, valor, tipoPizza) VALUES ('$nome', '$broto', '$ingrediente', '$grande', '$tipoPizza')";
+        public function inserir($nome, $ingrediente, $tipoPizza, $broto, $grande, $status) {    
+            $comando = "INSERT INTO pizza (nome, valorBroto, ingrediente, valor, tipoPizza, status) VALUES ('$nome', '$broto', '$ingrediente', '$grande', '$tipoPizza', '$status')";
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function editar($id, $nome, $ingrediente, $tipoPizza, $broto, $grande) {    
-            $comando = "UPDATE pizza SET nome = '$nome', ingrediente = '$ingrediente', tipoPizza = '$tipoPizza', valor = '$grande', valorBroto = '$broto' WHERE id_pizza = '$id'";
+        public function editar($id, $nome, $ingrediente, $tipoPizza, $broto, $grande, $status) {    
+            $comando = "UPDATE pizza SET nome = '$nome', ingrediente = '$ingrediente', tipoPizza = '$tipoPizza', valor = '$grande', valorBroto = '$broto', status = '$status' WHERE id_pizza = '$id'";
             $result = mysqli_query($this->conn, $comando);
         }
     }

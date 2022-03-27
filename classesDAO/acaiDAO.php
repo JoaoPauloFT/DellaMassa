@@ -15,6 +15,7 @@
                 $a->setNome($campo["nome"]);
                 $a->setingrediente($campo["ingrediente"]);
                 $a->setValor($campo["valor"]);
+                $a->setStatus($campo["status"]);
             }
             return $a;
         }
@@ -28,6 +29,7 @@
                 $a->setNome($campo["nome"]);
                 $a->setingrediente($campo["ingrediente"]);
                 $a->setValor($campo["valor"]);
+                $a->setStatus($campo["status"]);
             }
             return $a;
         }
@@ -37,13 +39,13 @@
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function inserir($nome, $ingrediente, $valor) {    
-            $comando = "INSERT INTO acai (nome, ingrediente, valor) VALUES ('$nome', '$ingrediente', '$valor')";
+        public function inserir($nome, $ingrediente, $valor, $status) {    
+            $comando = "INSERT INTO acai (nome, ingrediente, valor, status) VALUES ('$nome', '$ingrediente', '$valor', '$status')";
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function editar($id, $nome, $ingrediente, $valor) {    
-            $comando = "UPDATE acai SET nome = '$nome', ingrediente = '$ingrediente', valor = '$valor' WHERE id_acai = '$id'";
+        public function editar($id, $nome, $ingrediente, $valor, $status) {    
+            $comando = "UPDATE acai SET nome = '$nome', ingrediente = '$ingrediente', valor = '$valor', status = '$status' WHERE id_acai = '$id'";
             $result = mysqli_query($this->conn, $comando);
         }
     }

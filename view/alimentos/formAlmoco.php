@@ -20,12 +20,12 @@ if (isset($_POST['id'])) {
     if($_POST['id'] != "") {
         include_once("../../classesDAO/almocoDAO.php");
         $fDAO = new almocoDAO();
-        $fDAO->editar($_POST['id'], $_POST['nome'], $_POST['ingrediente'], $_POST['valor']);
+        $fDAO->editar($_POST['id'], $_POST['nome'], $_POST['ingrediente'], $_POST['valor'], $_POST['status']);
         header('location:almoco.php');
     } else {
         include_once("../../classesDAO/almocoDAO.php");
         $fDAO = new almocoDAO();
-        $fDAO->inserir($_POST['nome'], $_POST['ingrediente'], $_POST['valor']);
+        $fDAO->inserir($_POST['nome'], $_POST['ingrediente'], $_POST['valor'], $_POST['status']);
         header('location:almoco.php');
     }
 }
@@ -107,6 +107,20 @@ $logado = $_SESSION['login'];
                     <div class="mb-3">
                         <label for="valor" class="form-label">Valor:</label>
                         <input type="text" class="form-control" id="valor" placeholder="Valor" name="valor" value="<?php echo $c->getValor(); ?>">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="status" class="form-label">Ativo:</label>
+                        <select class="form-control" name="status" id="status">
+                            <?php if ($c->getStatus() == 0) { ?>
+                                <option value="1">Sim</option>
+                                <option value="0" selected>Não</option>
+                            <?php } else { ?>
+                                <option value="1" selected>Sim</option>
+                                <option value="0">Não</option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
                 <br />

@@ -20,12 +20,12 @@ if (isset($_POST['id'])) {
     if($_POST['id'] != "") {
         include_once("../../classesDAO/pizzaDAO.php");
         $cDAO = new pizzaDAO();
-        $cDAO->editar($_POST['id'], $_POST['nome'], $_POST['ingrediente'], $_POST['tipo'], $_POST['broto'], $_POST['grande']);
+        $cDAO->editar($_POST['id'], $_POST['nome'], $_POST['ingrediente'], $_POST['tipo'], $_POST['broto'], $_POST['grande'], $_POST['status']);
         header('location:pizza.php');
     } else {
         include_once("../../classesDAO/pizzaDAO.php");
         $fDAO = new pizzaDAO();
-        $fDAO->inserir($_POST['nome'], $_POST['ingrediente'], $_POST['tipo'], $_POST['broto'], $_POST['grande']);
+        $fDAO->inserir($_POST['nome'], $_POST['ingrediente'], $_POST['tipo'], $_POST['broto'], $_POST['grande'], $_POST['status']);
         header('location:pizza.php');
     }
 }
@@ -127,6 +127,20 @@ $logado = $_SESSION['login'];
                     <div class="col-6">
                         <label for="grande" class="form-label">Grande:</label>
                         <input type="text" class="form-control" id="grande" placeholder="Grande" name="grande" value="<?php echo $c->getGrande(); ?>">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="status" class="form-label">Ativo:</label>
+                        <select class="form-control" name="status" id="status">
+                            <?php if ($c->getStatus() == 0) { ?>
+                                <option value="1">Sim</option>
+                                <option value="0" selected>Não</option>
+                            <?php } else { ?>
+                                <option value="1" selected>Sim</option>
+                                <option value="0">Não</option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
                 <br />

@@ -92,6 +92,7 @@ $logado = $_SESSION['login'];
                         <th>Ingrediente</th>
                         <th>Valor</th>
                         <th>Duplo</th>
+                        <th>Status</th>
                         <th colspan="3">Ação</th>
                     </tr>
                 </thead>
@@ -113,15 +114,21 @@ $logado = $_SESSION['login'];
                     $result = mysqli_query($conn, $comando);
                     $contador = 0;		    
                     while ($campo=mysqli_fetch_array($result)){
+                        if($campo['status'] == 0) {
+                            $status = "Não";
+                        } else {
+                            $status = "Sim";
+                        }
                         $tabela->insere_linha($contador);
                         $tabela->insere_coluna($campo["id_lanche"],$contador,0);
                         $tabela->insere_coluna($campo["nome"],$contador,1);
                         $tabela->insere_coluna($campo["ingrediente"],$contador,2);
                         $tabela->insere_coluna($campo["valor"],$contador,3);
                         $tabela->insere_coluna($campo["valorDuplo"],$contador,4);
-                        $tabela->insere_coluna3("",$contador,5,"Inserir", "formLanche","");
-                        $tabela->insere_coluna3($campo["id_lanche"],$contador,6,"Editar", "formLanche","");
-                        $tabela->insere_coluna3($campo["id_lanche"],$contador,7,"Excluir", "formLanche","");
+                        $tabela->insere_coluna($status,$contador,5);
+                        $tabela->insere_coluna3("",$contador,6,"Inserir", "formLanche","");
+                        $tabela->insere_coluna3($campo["id_lanche"],$contador,7,"Editar", "formLanche","");
+                        $tabela->insere_coluna3($campo["id_lanche"],$contador,8,"Excluir", "formLanche","");
                         $tabela->fecha_linha();
                         $contador++;
                     }

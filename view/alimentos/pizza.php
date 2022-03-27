@@ -93,6 +93,7 @@ $logado = $_SESSION['login'];
                         <th>Tipo</th>
                         <th>Broto</th>
                         <th>Grande</th>
+                        <th>Status</th>
                         <th colspan="3">Ação</th>
                     </tr>
                 </thead>
@@ -119,6 +120,11 @@ $logado = $_SESSION['login'];
                         } else {
                             $tipo = "Salgado";
                         }
+                        if ($campo["status"] == "0") {
+                            $status = "Não";
+                        } else {
+                            $status = "Sim";
+                        }
                         $tabela->insere_linha($contador);
                         $tabela->insere_coluna($campo["id_pizza"],$contador,0);
                         $tabela->insere_coluna($campo["nome"],$contador,1);
@@ -126,9 +132,10 @@ $logado = $_SESSION['login'];
                         $tabela->insere_coluna($tipo,$contador,3);
                         $tabela->insere_coluna($campo["valorBroto"],$contador,4);
                         $tabela->insere_coluna($campo["valor"],$contador,5);
-                        $tabela->insere_coluna3("",$contador,6,"Inserir", "formPizza","");
-                        $tabela->insere_coluna3($campo["id_pizza"],$contador,7,"Editar", "formPizza","");
-                        $tabela->insere_coluna3($campo["id_pizza"],$contador,8,"Excluir", "formPizza","");
+                        $tabela->insere_coluna($status,$contador,6);
+                        $tabela->insere_coluna3("",$contador,7,"Inserir", "formPizza","");
+                        $tabela->insere_coluna3($campo["id_pizza"],$contador,8,"Editar", "formPizza","");
+                        $tabela->insere_coluna3($campo["id_pizza"],$contador,9,"Excluir", "formPizza","");
                         $tabela->fecha_linha();
                         $contador++;
                     }

@@ -14,6 +14,7 @@
                 $a->setId_borda($campo["id_borda"]);
                 $a->setNome($campo["nome"]);
                 $a->setValor($campo["valor"]);
+                $a->setStatus($campo["status"]);
             }
             return $a;
         }
@@ -23,13 +24,13 @@
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function inserir($nome, $valor) {    
-            $comando = "INSERT INTO borda (nome, valor) VALUES ('$nome', '$valor')";
+        public function inserir($nome, $valor, $status) {    
+            $comando = "INSERT INTO borda (nome, valor, status) VALUES ('$nome', '$valor', '$status')";
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function editar($id, $nome, $valor) {    
-            $comando = "UPDATE borda SET nome = '$nome', valor = '$valor' WHERE id_borda = '$id'";
+        public function editar($id, $nome, $valor, $status) {    
+            $comando = "UPDATE borda SET nome = '$nome', valor = '$valor', status = '$status' WHERE id_borda = '$id'";
             $result = mysqli_query($this->conn, $comando);
         }
     }

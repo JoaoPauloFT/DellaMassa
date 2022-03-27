@@ -3,6 +3,15 @@
         private $id_pastel;
         private $nome;
         private $valor;
+        private $status;
+
+        public function setStatus($status) {
+            $this->status = $status;
+        }
+
+        public function getStatus() {
+            return $this->status;
+        }
 
         public function setId_pastel($id_pastel) {
             $this->id_pastel = $id_pastel;

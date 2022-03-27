@@ -1,0 +1,11 @@
+ALTER TABLE `acai` ADD `status` INT NOT NULL DEFAULT '1';
+ALTER TABLE `almoco` ADD `status` INT NOT NULL DEFAULT '1';
+ALTER TABLE `bebida` ADD `status` INT NOT NULL DEFAULT '1';
+ALTER TABLE `borda` ADD `status` INT NOT NULL DEFAULT '1';
+ALTER TABLE `esfiha` ADD `status` INT NOT NULL DEFAULT '1';
+ALTER TABLE `ingrediente` ADD `status` INT NOT NULL DEFAULT '1';
+ALTER TABLE `lanche` ADD `status` INT NOT NULL DEFAULT '1';
+ALTER TABLE `pastel` ADD `status` INT NOT NULL DEFAULT '1';
+ALTER TABLE `pizza` ADD `status` INT NOT NULL DEFAULT '1';
+ALTER TABLE `porcao` ADD `status` INT NOT NULL DEFAULT '1';
+ALTER TABLE `sobremesa` ADD `status` INT NOT NULL DEFAULT '1';

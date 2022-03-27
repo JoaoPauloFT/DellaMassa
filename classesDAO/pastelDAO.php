@@ -14,6 +14,7 @@
                 $a->setId_pastel($campo["id_pastel"]);
                 $a->setNome($campo["nome"]);
                 $a->setValor($campo["valor"]);
+                $a->setStatus($campo["status"]);
             }
             return $a;
         }
@@ -23,13 +24,13 @@
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function inserir($nome, $valor) {    
-            $comando = "INSERT INTO pastel (nome, valor) VALUES ('$nome', '$valor')";
+        public function inserir($nome, $valor, $status) {    
+            $comando = "INSERT INTO pastel (nome, valor, status) VALUES ('$nome', '$valor', '$status')";
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function editar($id, $nome, $valor) {    
-            $comando = "UPDATE pastel SET nome = '$nome', valor = '$valor' WHERE id_pastel = '$id'";
+        public function editar($id, $nome, $valor, $status) {    
+            $comando = "UPDATE pastel SET nome = '$nome', valor = '$valor', status = '$status' WHERE id_pastel = '$id'";
             $result = mysqli_query($this->conn, $comando);
         }
     }

@@ -15,6 +15,7 @@
                 $a->setNome($campo["nome"]);
                 $a->setValor($campo["valor"]);
                 $a->setTipo($campo["tipo"]);
+                $a->setStatus($campo["status"]);
             }
             return $a;
         }
@@ -24,13 +25,13 @@
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function inserir($nome, $valor, $tipo) {    
-            $comando = "INSERT INTO esfiha (nome, valor, tipo) VALUES ('$nome', '$valor', '$tipo')";
+        public function inserir($nome, $valor, $tipo, $status) {    
+            $comando = "INSERT INTO esfiha (nome, valor, tipo, status) VALUES ('$nome', '$valor', '$tipo', '$status')";
             $result = mysqli_query($this->conn, $comando);
         }
         
-        public function editar($id, $nome, $valor, $tipo) {    
-            $comando = "UPDATE esfiha SET nome = '$nome', valor = '$valor', tipo = '$tipo' WHERE id_esfiha = '$id'";
+        public function editar($id, $nome, $valor, $tipo, $status) {    
+            $comando = "UPDATE esfiha SET nome = '$nome', valor = '$valor', tipo = '$tipo', status = '$status' WHERE id_esfiha = '$id'";
             $result = mysqli_query($this->conn, $comando);
         }
     }
