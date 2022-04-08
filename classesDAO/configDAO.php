@@ -22,7 +22,15 @@
         }
         
         public function editar($hia, $hij, $hta, $htj) {    
-            $comando = "UPDATE config SET hora_inicio_almoco = '$hia', hora_inicio_janta = '$hij', hora_termino_almoco = '$hta', hora_termino_janta = '$htj' WHERE id_config = 1";
+            if ($htj < $hij) {
+                $htj = explode(":",$htj);
+                $htj[0] += 24;
+                $this->hora  = $htj[0].":".$htj[1].":00";
+                $comando = "UPDATE config SET hora_inicio_almoco = '$hia', hora_inicio_janta = '$hij', hora_termino_almoco = '$hta', hora_termino_janta = '$this->hora' WHERE id_config = 1";
+            } else {
+                $comando = "UPDATE config SET hora_inicio_almoco = '$hia', hora_inicio_janta = '$hij', hora_termino_almoco = '$hta', hora_termino_janta = '$htj' WHERE id_config = 1";
+            }
+            
             $result = mysqli_query($this->conn, $comando);
         }
     }

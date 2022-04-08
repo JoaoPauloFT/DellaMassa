@@ -3,7 +3,7 @@
 	$config = array();
 
 	if($_SERVER['HTTP_HOST'] == 'localhost') {
-		$config['dbname'] = 'id16726370_dellamassa';
+		$config['dbname'] = 'pizzariadellam';
 		$config['host'] = 'localhost';
 		$config['dbuser'] = 'root';
 		$config['dbpass'] = '';

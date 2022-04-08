@@ -14,6 +14,10 @@ if (isset($_POST['hia'])) {
 }
 
 $c = $cDAO->pesquisar();
+$coringa = explode(":", $c->getHtj());
+if($coringa[0] > 24) {
+    $c->setHtj("0".($coringa[0]-24).":".$coringa[1].":".$coringa[2]);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

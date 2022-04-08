@@ -96,7 +96,6 @@ $logado = $_SESSION['login'];
                     $base2 = 5;
                     $base = $pag * $base2;
                     if($pesquisar == "") {
-                        header('Content-Type: text/html; charset=utf-8');
                         $comando = "SELECT CA.NumPedido, CL.nome, CA.valorTotal, CA.status
                         FROM carrinho AS CA
                         INNER JOIN cliente AS CL
