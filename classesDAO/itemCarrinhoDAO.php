@@ -4,6 +4,7 @@
         public function __construct() {
             require "conexao.php";
 	        $this->conn = mysqli_connect($config['host'], $config['dbuser'], $config['dbpass'], $config['dbname']);
+            $this->conn->set_charset('utf8');
         }
 
         public function pesquisar($id_carrinho) {

@@ -19,7 +19,7 @@ $logado = $_SESSION['login'];
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv=”Content-Type” content=”text/html; charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -96,6 +96,7 @@ $logado = $_SESSION['login'];
                     $base2 = 5;
                     $base = $pag * $base2;
                     if($pesquisar == "") {
+                        header('Content-Type: text/html; charset=utf-8');
                         $comando = "SELECT CA.NumPedido, CL.nome, CA.valorTotal, CA.status
                         FROM carrinho AS CA
                         INNER JOIN cliente AS CL

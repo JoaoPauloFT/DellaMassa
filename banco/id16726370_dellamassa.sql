@@ -1,5 +1,5 @@
-CREATE DATABASE id16726370_dellamassa;
-USE id16726370_dellamassa;
+-- CREATE DATABASE id16726370_dellamassa;
+USE pizzariadellam;
 -- phpMyAdmin SQL Dump
 -- version 4.9.5
 -- https://www.phpmyadmin.net/
