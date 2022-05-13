@@ -9,7 +9,7 @@
 		$config['dbpass'] = '';
 	} else {
 		$config['dbname'] = 'pizzariadellam';
-		$config['host'] = 'mysql.pizzariadellamassa.kinghost.net';
+		$config['host'] = 'mysql.dellamassa.com.br';
 		$config['dbuser'] = 'pizzariadellam';
 		$config['dbpass'] = 'Dellamassa22';
 	}
